@@ -2,8 +2,8 @@ package qkd;
 
 
 /*
-Name:       <enter here>
-UT EID's:   <enter here>
+Name:       Ryan Torok
+UT EID's:   rt24776
 
  */
 
@@ -29,25 +29,40 @@ it has been provided for you.
 
 public class qubit implements Serializable{
 
+    private complex c1, c2;
+    static final double sr2 = Math.sqrt(2);
 
-    //TODO implement constructor
     public qubit() {
+		c1 = new complex(0,0);
+		c2 = new complex(0,0);
     }
 
-    //TODO
     public void prepZero(){
+	c1.real = 1;
+	c1.im = 0;
+	c2.real = 0;
+	c2.im = 0; 
     }
 
-    //TODO
     public void prepOne(){
+	c1.real = 0;
+	c1.im = 0;
+	c2.real = 1;
+	c2.im = 0;
     }
 
-    //TODO
     public void prepPlus(){
+	c1.real = 1/sr2;
+	c1.im = 0;
+	c2.real = 1/sr2;
+	c2.im = 0;
     }
 
-    //TODO
     public void prepMinus(){
+	c1.real = 1/sr2;
+	c1.im = 0;
+	c2.real = -1/sr2;
+	c2.im = 0;
     }
 
     //TODO (MUST RETURN SINGLE CHARACTER STRINGS)
@@ -60,16 +75,21 @@ public class qubit implements Serializable{
         return new String();
     }
 
-    //TODO
     public void pauliX(){
+	complex temp = c1;
+	c1 = c2;
+	c2 = temp;	
     }
 
-    //TODO
     public void pauliZ(){
+	c2 = complex.multiply(-1, c2);
     }
-    //TODO
+    
     public void hadamard(){
+	complex c1Old = c1, c2Old = c2;
+	c1 = complex.add(c1Old, c2Old);
+	c2 = complex.subtract(c1Old, c2Old);
+	c1 = complex.multiply(1/sr2);
+	c2 = complex.multiply(1/sr2);
     }
-
-
 }

@@ -40,5 +40,4 @@ public class complex implements Serializable{
     static complex multiply(double scalar, complex c1){
         return new complex(scalar*c1.real, scalar*c1.im);
     }
-
 }
