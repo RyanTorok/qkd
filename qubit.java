@@ -65,14 +65,13 @@ public class qubit implements Serializable{
 	c2.im = 0;
     }
 
-    //TODO (MUST RETURN SINGLE CHARACTER STRINGS)
-    public String measureZeroOne(){
-        return new String();
+    public String measureZeroOne() {
+        return (Math.random() < complex.magnitude2(c1)) ? "0" : "1";
     }
 
-    //TODO (MUST RETURN SINGLE CHARACTER STRINGS)
-    public String measurePlusMinus(){
-        return new String();
+    public String measurePlusMinus() {
+	complex alphaPrime = complex.multiply(1/sr2, (complex.add(c1, c2)));
+        return (Math.random() < complex.magnitude2(alphaPrime)) ? "0" : "1";
     }
 
     public void pauliX(){
