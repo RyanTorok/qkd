@@ -1,0 +1,20 @@
+To run this code through the terminal/command prompt:
+
+1) Navigate into the qkd package (This is the folder which contains your .java files)
+2) Enter "javac *.java" (without the quotes)
+3) You should see any compilation error messages show up. If you see nothing, this means your code compiled. A .class file should have been generated for every .java file in your qkd package.
+4) Navate into the directory which contains the qkd package. 
+
+For example, if you have CS_309 > Project_1 > qkd > [all your .java and .class files]
+You want to navigate to the Project_1 folder. If you run "ls", you should see qkd printed out.
+
+To run the testing script, run "java qkd.QubitTester" (again, no quotes)
+
+The output should be displayed in the console. 
+
+ALTERNATIVELY: You can use an IDE. Eclipse and Intellij are the most popular. I recommend using Intellij for no reason other than I use Intellij and I will be better suited to help you resolve IDE issues. 
+
+Let us know if you find any problems with this protocol.
+These are helpful resources I used to figure some of this out:
+https://introcs.cs.princeton.edu/java/15inout/windows-cmd.html
+https://introcs.cs.princeton.edu/java/15inout/mac-cmd.html 
