@@ -137,11 +137,11 @@ public class QubitTester {
                     System.out.println("Plus-Minus measurement did not return plus or minus");
                     throw InvalidMeasurementException;
                 }
-                if (result2.equals("+") && !result2.equals("+")) {
+                if (result1.equals("+") && !result2.equals("+")) {
                     System.out.println("Plus state did not measure to plus");
                     throw InvalidMeasurementException;
                 }
-                if (result2.equals("-") && !result2.equals("-")) {
+                if (result1.equals("-") && !result2.equals("-")) {
                     System.out.println("Minus state did not measure to minus");
                     throw InvalidMeasurementException;
                 }

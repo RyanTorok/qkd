@@ -11,9 +11,6 @@ UT EID's:   rt24776
 import java.io.Serializable;
 import static java.lang.Math.random;
 import static java.lang.Math.sqrt;
-//import static qkd.complex.add;
-//import static qkd.complex.multiply;
-//import static qkd.complex.subtract;
 
 /*
 This Class is for you to implement
