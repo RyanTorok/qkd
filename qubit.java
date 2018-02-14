@@ -23,7 +23,7 @@ will certainly break.
 You are encouraged to look at the complex.java class,
 it has been provided for you.
  */
-
+//comment
 public class qubit implements Serializable{
 
     private complex c1, c2;
