@@ -33,8 +33,8 @@ public class qubit implements Serializable{
     static final double sr2 = Math.sqrt(2);
 
     public qubit() {
-		c1 = new complex(0,0);
-		c2 = new complex(0,0);
+	    c1 = new complex(0,0);
+	    c2 = new complex(0,0);
     }
 
     public void prepZero(){
@@ -66,29 +66,44 @@ public class qubit implements Serializable{
     }
 
     public String measureZeroOne() {
-        return (Math.random() < complex.magnitude2(c1)) ? "0" : "1";
+	    double mag = Math.sqrt(complex.magnitude2(c1) + complex.magnitude2(c2));
+	    if (Math.random() < complex.magnitude2(complex.multiply(1/mag, c1))) {
+		    prepZero();
+		    return "0";
+	    } else {
+		    prepOne();
+		    return "1";
+	    }
     }
 
     public String measurePlusMinus() {
-	complex alphaPrime = complex.multiply(1/sr2, (complex.add(c1, c2)));
-        return (Math.random() < complex.magnitude2(alphaPrime)) ? "0" : "1";
+	    complex alphaPrime = complex.multiply(1/sr2, (complex.add(c1, c2)));
+	    complex betaPrime = complex.multiply(1/sr2, (complex.subtract(c1, c2)));
+	    double mag = Math.sqrt(complex.magnitude2(alphaPrime) + complex.magnitude2(betaPrime));
+	    if (Math.random() < complex.magnitude2(complex.multiply(1/mag, alphaPrime))) {
+		    prepPlus();
+		    return "+";
+	    } else {
+		    prepMinus();
+		    return "-";	
+	    }
     }
 
     public void pauliX(){
-	complex temp = c1;
-	c1 = c2;
-	c2 = temp;	
+	    complex temp = c1;
+	    c1 = c2;
+	    c2 = temp;
     }
 
     public void pauliZ(){
-	c2 = complex.multiply(-1, c2);
+	    c2 = complex.multiply(-1, c2);
     }
-    
+
     public void hadamard(){
-	complex c1Old = c1, c2Old = c2;
-	c1 = complex.add(c1Old, c2Old);
-	c2 = complex.subtract(c1Old, c2Old);
-	c1 = complex.multiply(1/sr2);
-	c2 = complex.multiply(1/sr2);
+	    complex c1Old = c1, c2Old = c2;
+	    c1 = complex.add(c1Old, c2Old);
+	    c2 = complex.subtract(c1Old, c2Old);
+	    c1 = complex.multiply(1/sr2, c1);
+	    c2 = complex.multiply(1/sr2, c2);
     }
 }
