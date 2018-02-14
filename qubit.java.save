@@ -14,7 +14,7 @@ import static java.lang.Math.sqrt;
 //import static qkd.complex.add;
 //import static qkd.complex.multiply;
 //import static qkd.complex.subtract;
-//some comments
+//some test comment
 /*
 This Class is for you to implement
 Measurement functions will return strings
