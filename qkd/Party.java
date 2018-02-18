@@ -122,7 +122,6 @@ public class Party {
     }
 
     public static void sendPhoton(photon p, Identity recipient) throws IOException {
-
         p.depolarize(config.HalfChannelDepolarize);
         if(rand.nextDouble() < config.HalfChannelLoss){p.present = false;}
 

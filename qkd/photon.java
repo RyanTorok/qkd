@@ -111,8 +111,4 @@ public class photon implements Serializable {
         }
         return bits;
     }
-
-
 }
-
-

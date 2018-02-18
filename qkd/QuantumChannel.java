@@ -194,19 +194,19 @@ class ServerThread extends Thread{
                 this.name = name;
                 if(name.equals(Identity.Alice)){
                     //if(QuantumChannel.AliceConnected) System.exit(0);
-                    QuantumChannel.AliceConnected = true;
+                    AliceConnected = true;
                     //QuantumChannel.AliceThread = this;
                     break;
                 }
                 if(name.equals(Identity.Bob)){
                     //if(QuantumChannel.BobConnected) System.exit(0);
-                    QuantumChannel.BobConnected = true;
+                    BobConnected = true;
                     //QuantumChannel.BobThread = this;
                     break;
                 }
                 if(name.equals(Identity.Eve)){
                     //if(QuantumChannel.EveConnected) System.exit(0);
-                    QuantumChannel.EveConnected = true;
+                    EveConnected = true;
                     //QuantumChannel.BobThread = this;
                     break;
                 }
@@ -216,7 +216,7 @@ class ServerThread extends Thread{
 
             while(true){
                 Thread.sleep(300);
-                if(QuantumChannel.AliceConnected && QuantumChannel.BobConnected){ break;}
+                if(AliceConnected && BobConnected){ break;}
             }
 
             //Send Confirmation to each party that a connection has been established.
@@ -248,15 +248,18 @@ class ServerThread extends Thread{
                     }
 
                     //Forward Messages Normally
-                    QuantumChannel.forwardTo(((Message)Msg), name);
+                    forwardTo(((Message)Msg), name);
                     Thread.sleep(25);
 
                 } catch (IOException e) {
 
                     oos.reset();
-                    if(name.equals(Identity.Alice)){QuantumChannel.AliceConnected = false;}
-                    if(name.equals(Identity.Bob)){QuantumChannel.BobConnected = false;}
-                    if(name.equals(Identity.Eve)){QuantumChannel.EveConnected = false;}
+                    if(name.equals(Identity.Alice)){
+                        AliceConnected = false;}
+                    if(name.equals(Identity.Bob)){
+                        BobConnected = false;}
+                    if(name.equals(Identity.Eve)){
+                        EveConnected = false;}
 
                     for(int i = 0; i < QuantumChannel.ActiveParties.size(); i++){
                         if(QuantumChannel.ActiveParties.get(i).name.equals(name)){
