@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class Alice extends Party {
 
-    public static final double MAX_ACCEPTABLE_ERROR = .05; //just a guess, will have to test what is the best error rate
+    public static final double MAX_ACCEPTABLE_ERROR = .05; //just a guess, will have to test what is a sufficient error rate
     public static final int NUM_TEST_BITS = 10000;
     public static final int NUM_MSG_BITS = 100000;
 
