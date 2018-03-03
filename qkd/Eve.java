@@ -27,7 +27,7 @@ public class Eve extends Party {
             received[i] = getPhoton();
         }
         for (int i = 0; i < eveBasis.length(); i++) {
-            boolean measure = ;
+            boolean measure = true;
             if (measure) {
                 if (eveBasis.charAt(i) == '0')
                     received[i].filterH();
@@ -42,10 +42,6 @@ public class Eve extends Party {
         String bobBasis = getString();
         deduced = siftKey(deduced, aliceBasis, bobBasis);
         eveBasis = siftKey(eveBasis, aliceBasis, bobBasis);
-        for (int i = 0; i < deduced.length(); i++) {
-            if (aliceBasis.charAt(i) != eveBasis.charAt(i))
-                deduced = deduced.substring(0, i) + "_" + deduced.substring(i + 1);
-        }
         return deduced;
     }
 
