@@ -13,7 +13,7 @@ public class Bob extends Party
         for ( int i = 0; i < config.numProtocolRuns; i++ )
         {
             String secureBits = protocol();
-            getStatistics( secureBits );
+           // getStatistics( secureBits );
             doCryptography( secureBits );
         }
     }
@@ -55,7 +55,6 @@ public class Bob extends Party
                 } else results.append( "1" );
             }
         }
-
         // Receive alice's bases and announce our bases to Alice
         String aBases = getString();
         sendString( bases );
@@ -135,7 +134,6 @@ public class Bob extends Party
             if ( i % 4 != 0 )
                 endKey.append( key.charAt( i ) );
         }
-
         return endKey.toString();
     }
 }

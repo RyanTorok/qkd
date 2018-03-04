@@ -1,4 +1,4 @@
-ckage qkd;
+package qkd;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,35 +9,34 @@ public class Eve extends Party {
 
         Initialize(Identity.Eve);
 
-        String secureBits = "";
+        String secureBits = protocol();
 
-        /*getStatistics(secureBits);
-        doCryptography(secureBits);//*/
+        getStatistics(secureBits);
+        doCryptography(secureBits);
     }
 
     public static String protocol() throws IOException, InterruptedException {
         String deduced = "";
         int numBits = config.numberofBits;
         String eveBasis = photon.randomBits(numBits);
-        for (int i = 0; i < numBits; i++) {
-            deduced += '_';
-        }
         photon[] received = new photon[numBits];
         for (int i = 0; i < received.length; i++) {
             received[i] = getPhoton();
         }
+
         for (int i = 0; i < eveBasis.length(); i++) {
             boolean measure = true;
             if (measure) {
                 if (eveBasis.charAt(i) == '0')
                     received[i].filterH();
                 else received[i].filterD();
-                deduced = deduced.substring(0, i) + received[i].detect() + deduced.substring(i + 1);
-            }
+                deduced += received[i].detect();
+            } else {
+		//if we choose not to measure a photon, just guess.
+		deduced += Math.random() < .5 ? "0" : "1";
+	    }
         }
-        for (photon p : received) {
-            sendPhoton(p);
-        }
+
         String aliceBasis = getString();
         String bobBasis = getString();
         deduced = siftKey(deduced, aliceBasis, bobBasis);

@@ -1,0 +1,71 @@
+All of the classes in this zip file have been provided for you with the exception of three methods:
+You are to implement the protocol() method for Alice.java Bob.Java and Eve.java.
+In order to complete this lab, you may also add to the main() methods for each of these three classes. 
+
+In order for your code to run with the classes that have been provided, 
+each of these three parties will first need to call the Initialize() method within their main() method.
+Initialize handles the network programming. 
+
+Note: The QuantumChannel class must be called first. This class is the server which mediates all connections between the parties. 
+
+After Alice and Bob have both connected to the server, they will begin their protocol. Therefore, if you intend to have Eve listen in, she must connect to the server before both Alice and Bob have begun. 
+
+To Summarize:
+1) Start QuantumChannel
+2) Start Alice, Bob, (optionally Eve) 
+3) If Eve will be eavesdropping, connect Eve to server
+4) Connect Alice and Bob to server. 
+5) Your protocol will run. 
+
+==========================================
+PROTOCOL METHODS:                        |
+==========================================
+
+All methods inside photon.java are fair game.
+
+Alice's and Bob's protocol:
+You have been provided with the following methods to use:
+
+void	sendPhoton(photon p)   [Alice and Bob do not need to specify a recipient.] 
+void	sendPhoton(photon p, Identity recipient)   [Eve MUST specify a recipient!]
+photon	getPhoton()
+void 	sendString(String str) Eve may not call sendStrings, the code will cannibalize itself if you try.
+String	getString()
+
+To clarify the way this works, when Eve recieves a photon, she must resend that photon to the correct party; however, when Eve recieves a string she is not responsible for forwarding that string. It will automatically be forwarded on. 
+
+
+==========================================
+HELPER METHODS:                          |
+==========================================
+To assist with analyzing your protocol, you have been provided two helper funcitons:
+
+	getStatistics(secureBits);
+After running your protocol, have all parties call getStatistics() and pass in their secure bits. This will tell all parties how many bits were correctly exchanged and how many were correctly eavesdropped. 
+
+	doCryptography(secureBits);
+After running your protocol, have all parties call doCryptography to send an encrypted message over the classical channel. 
+
+NOTE: If you restart your Alice Bob and Eve threads without restarting the QuantumChannel Thread, doCryptography has undefined behavior. It will almost certainly crash and this is due to excess data remaining in QuantumChannel's output streams.
+
+====================================================
+To run this code through the terminal/command prompt:
+
+1) Navigate into the qkd package (This is the folder which contains your .java files)
+2) Enter "javac *.java" (without the quotes)
+3) You should see any compilation error messages show up. If you see nothing, this means your code compiled. A .class file should have been generated for every .java file in your qkd package.
+4) Navate into the directory which contains the qkd package. 
+
+For example, if you have CS_309 > Project_1 > qkd > [all your .java and .class files]
+You want to navigate to the Project_1 folder. If you run "ls", you should see qkd printed out.
+
+To run the testing script, run "java qkd.QubitTester" (again, no quotes)
+
+The output should be displayed in the console. 
+
+ALTERNATIVELY: You can use an IDE. Eclipse and Intellij are the most popular. I recommend using Intellij for no reason other than I use Intellij and I will be better suited to help you resolve IDE issues. 
+
+Let us know if you find any problems with this protocol.
+These are helpful resources I used to figure some of this out:
+https://introcs.cs.princeton.edu/java/15inout/windows-cmd.html
+https://introcs.cs.princeton.edu/java/15inout/mac-cmd.html 
